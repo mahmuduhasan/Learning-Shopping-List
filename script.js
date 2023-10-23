@@ -101,20 +101,20 @@ const onDragEnd = () => console.log("I am done dragging!");
 // logo.addEventListener("drag", onDrag);
 // logo.addEventListener("dragend", onDragEnd);
 
-logo.addEventListener("click", function (e) {
-  // console.log(e.target);
-  // console.log(e.currentTarget);
-  // e.target.style.backgroundColor = "black";
-  // console.log(e.type);
-  // console.log(e.clientX);
-  // console.log(e.clientY);
-  // console.log(e.offsetX);
-  // console.log(e.offsetY);
-  // console.log(e.pageX);
-  // console.log(e.pageY);
-  console.log(e.screenX);
-  console.log(e.screenY);
-});
+// logo.addEventListener("click", function (e) {
+// console.log(e.target);
+// console.log(e.currentTarget);
+// e.target.style.backgroundColor = "black";
+// console.log(e.type);
+// console.log(e.clientX);
+// console.log(e.clientY);
+// console.log(e.offsetX);
+// console.log(e.offsetY);
+// console.log(e.pageX);
+// console.log(e.pageY);
+// console.log(e.screenX);
+// console.log(e.screenY);
+// });
 
 // logo.addEventListener("drag", (e) => {
 //   console.log(e.offsetX);
@@ -128,7 +128,7 @@ logo.addEventListener("click", function (e) {
 
 // Keyboard Events
 
-const itemInput = document.getElementById("item-input");
+// const itemInput = document.getElementById("item-input");
 
 // itemInput.addEventListener("keypress", (e) => {
 //   console.log("keypress");
@@ -138,20 +138,51 @@ const itemInput = document.getElementById("item-input");
 //   console.log("keyup");
 // });
 
-itemInput.addEventListener("keydown", (e) => {
-  // console.log("keydown");
+// itemInput.addEventListener("keydown", (e) => {
+// console.log("keydown");
 
-  //Key
-  console.log(e.key);
-  //KeyCode
-  console.log(e.keyCode);
-  //Code
-  console.log(e.code);
-  if (e.key === "Enter") {
-    e.preventDefault();
-  }
+//Key
+// console.log(e.key);
+//KeyCode
+// console.log(e.keyCode);
+//Code
+//   console.log(e.code);
+//   if (e.key === "Enter") {
+//     e.preventDefault();
+//   }
 
-  if (e.repeat) {
-    console.log("You are holding down!" + e.key);
-  }
+//   if (e.repeat) {
+//     console.log("You are holding down!" + e.key);
+//   }
+// });
+
+const itemInput = document.getElementById("item-input");
+const priorityInput = document.getElementById("priority-input");
+const checkBox = document.getElementById("checkbox");
+const heading = document.querySelector("h1");
+
+console.log(itemInput, priorityInput, checkBox, heading);
+
+itemInput.addEventListener("input", (e) => {
+  heading.textContent = e.target.value;
+});
+
+priorityInput.addEventListener("change", (e) => {
+  heading.textContent = e.target.value;
+});
+
+checkBox.addEventListener("change", (e) => {
+  heading.textContent = e.target.checked ? "Checked" : "Not Checked";
+});
+
+itemInput.addEventListener("focus", (e) => {
+  console.log("Input is focused!");
+  itemInput.style.outlineStyle = "solid";
+  itemInput.style.outlineWidth = "1px";
+  itemInput.style.outlineColor = "red";
+});
+
+itemInput.addEventListener("blur", (e) => {
+  console.log("Input is not focused!");
+  itemInput.style.outlineStyle = "none";
 });
