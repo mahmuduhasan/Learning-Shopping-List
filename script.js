@@ -2,6 +2,12 @@
 
 const clearBtn = document.getElementById("clear");
 const logo = document.querySelector("img");
+const itemInput = document.getElementById("item-input");
+const priorityInput = document.getElementById("priority-input");
+const checkBox = document.getElementById("checkbox");
+const heading = document.querySelector("h1");
+const form = document.getElementById("item-form");
+const button = document.querySelector("form button");
 
 // clearBtn.onclick = function () {
 //   alert("Clear Items");
@@ -156,11 +162,6 @@ const onDragEnd = () => console.log("I am done dragging!");
 //   }
 // });
 
-const itemInput = document.getElementById("item-input");
-const priorityInput = document.getElementById("priority-input");
-const checkBox = document.getElementById("checkbox");
-const heading = document.querySelector("h1");
-
 console.log(itemInput, priorityInput, checkBox, heading);
 
 itemInput.addEventListener("input", (e) => {
@@ -185,4 +186,36 @@ itemInput.addEventListener("focus", (e) => {
 itemInput.addEventListener("blur", (e) => {
   console.log("Input is not focused!");
   itemInput.style.outlineStyle = "none";
+});
+
+const onSubmit = (e) => {
+  e.preventDefault();
+  // console.log("Submit");
+  // console.log(itemInput.value, priorityInput.value);
+  const formData = new FormData(form);
+
+  const item = formData.get("item");
+  const priority = formData.get("priority");
+
+  if (item === "" || priority === "0") {
+    alert("Please fill all fields!");
+    return;
+  }
+  console.log(item, priority);
+};
+
+form.addEventListener("submit", onSubmit);
+
+//Event Bubbling
+
+button.addEventListener("click", (e) => {
+  alert("Button was clicked!");
+  e.stopPropagation();
+});
+form.addEventListener("click", () => {
+  alert("Form was clicked!");
+});
+
+document.body.addEventListener("click", () => {
+  alert("Body was clicked!");
 });
